@@ -1,0 +1,17 @@
+{
+  "name": "codial",
+  "version": "1.0.0",
+  "description": "Social Media site",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Umar Faiq",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^3.1.3",
+    "express": "^4.17.1",
+    "mongoose": "^5.9.23"
+  }
+}
