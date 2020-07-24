@@ -3,8 +3,13 @@ const port = 8000;
 // require essential modules 
 const express = require('express');
 const app = express();
+const cookieParser = require('cookie-parser');
 const db = require('./config/mongoose');
 const expressLayouts = require('express-ejs-layouts');
+
+// middlewares for parsing form data and cookies
+app.use(express.urlencoded());
+app.use(cookieParser());
 
 // middleware for express-ejs-layouts to have a separate layout.ejs file in views
 app.use(expressLayouts);

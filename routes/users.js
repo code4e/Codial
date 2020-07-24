@@ -10,5 +10,7 @@ router.get('/posts', usersPostController.posts);
 router.get('/sign-in-page', userController.signIn);
 router.get('/sign-up-page', userController.signUp);
 
+// route the create user post request to create user action in user controller
+router.post('/create', userController.createUser);
 
 module.exports = router;
