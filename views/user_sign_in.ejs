@@ -3,7 +3,7 @@
     <%= heading %>
 </h1>
 <form action="/users/create-session" method="POST">
-    <input type="email" placeholder="Enter Your Email Here" required>
-    <input type="password" placeholder="Enter Password e.g. abc@123" required>
+    <input type="email" placeholder="Enter Your Email Here" required name="email">
+    <input type="password" placeholder="Enter Password e.g. abc@123" name="password" required>
     <button type="submit">Sign In</button>
 </form>

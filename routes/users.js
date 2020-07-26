@@ -13,4 +13,9 @@ router.get('/sign-up-page', userController.signUp);
 // route the create user post request to create user action in user controller
 router.post('/create', userController.createUser);
 
+router.post('/create-session', userController.createSession);
+router.get('/user-sign-out', userController.terminateSession);
+
+
+
 module.exports = router;
