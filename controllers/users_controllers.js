@@ -2,7 +2,8 @@ const User = require('../models/users');
 const {
     db
 } = require('../models/users');
-var ObjectId = require('mongodb').ObjectId;
+
+
 // render the user profile page
 module.exports.profile = function (req, res) {
     if (req.cookies.user_id) {
@@ -24,8 +25,6 @@ module.exports.profile = function (req, res) {
         return res.redirect('/users/sign-in-page');
 
     }
-
-
 }
 
 
@@ -74,7 +73,7 @@ module.exports.createUser = function (req, res) {
 
 // sign in the user and create a session
 module.exports.createSession = function (req, res) {
-    // find the user 
+    find the user 
     User.findOne({
         email: req.body.email
     }, function (err, user) {
