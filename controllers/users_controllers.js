@@ -73,7 +73,7 @@ module.exports.createUser = function (req, res) {
 
 // sign in the user and create a session
 module.exports.createSession = function (req, res) {
-    find the user 
+    // find the user 
     User.findOne({
         email: req.body.email
     }, function (err, user) {
