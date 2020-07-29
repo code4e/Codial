@@ -28,7 +28,6 @@ module.exports.signUp = function(req, res){
 
 // create a new user in the database
 module.exports.createUser = function(req, res){
-    console.log(req.body);
     if(req.body.password != req.body.confirmPassword){
         return res.redirect('back');
     }
@@ -54,5 +53,7 @@ module.exports.createUser = function(req, res){
 
 // sign in the user and create a session
 module.exports.createSession = function(req, res){
-    
+    console.log('successfully authenticated');
+    // assuming that all failure cases are handled by passport and express-session, the next step is to redirect to profile page in case of success
+    return res.redirect('/');
 }
