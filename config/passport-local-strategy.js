@@ -46,4 +46,30 @@ passport.deserializeUser(function (id, done) {
     });
 });
 
+
+
+// set up a function in passport to check if user is authenticated or not. This'll be used as a middleware before createSession controller action
+passport.checkAuthenticated = function(req, res, next){
+
+    // if user is authenticated, pass on the request to appropriate controller's action
+    if(req.isAuthenticated()){
+        return next();
+    }
+
+
+    // user is not authenticated
+    return res.redirect('/users/sign-in-page');
+}
+
+
+// this is defined as middleware in app.js and is called and makes the user's info which is currently in req.user and copy it into 
+// response locals to make it accssible in views
+passport.setAuthenticatedUser = function(req, res, next){
+    if(req.isAuthenticated()){
+
+        res.locals.user = req.user;
+    }
+    return next();
+}
+
 module.exports = passport;

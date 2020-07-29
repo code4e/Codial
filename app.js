@@ -60,6 +60,9 @@ app.use(passport.initialize());
 // telling passport to use the session defined above
 app.use(passport.session());
 
+// use the setAuthenticedUser middleware to put user data into response locals to be accessible by views
+app.use(passport.setAuthenticatedUser);
+
 // use a middleware to route all the requests to ./routes/index.js file
 app.use('/', require('./routes/index'));
 

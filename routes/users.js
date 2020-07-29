@@ -10,7 +10,12 @@ const {
 const passport = require('passport');
 
 // route the requests related to user to user controller and execute appropriate action for the request
-router.get('/profile', userController.profile);
+
+// for users/profile request, we first pass it on the middleware which checks if user is authenticated. If user is 
+// authenticated, pass req forward to controller's action to render profile page
+router.get('/profile', passport.checkAuthenticated, userController.profile);
+
+
 router.get('/posts', usersPostController.posts);
 router.get('/sign-in-page', userController.signIn);
 router.get('/sign-up-page', userController.signUp);
