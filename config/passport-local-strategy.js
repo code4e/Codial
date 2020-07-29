@@ -72,4 +72,13 @@ passport.setAuthenticatedUser = function(req, res, next){
     return next();
 }
 
+
+passport.isSignedIn = function(req, res, next){
+    if(!req.isAuthenticated()){
+        return next();
+    }
+
+    return res.redirect('/users/profile');
+}
+
 module.exports = passport;

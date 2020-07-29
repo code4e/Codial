@@ -14,6 +14,7 @@ const passportLocal = require('./config/passport-local-strategy');
 // require passport and express-session for handling the session
 const passport = require('passport');
 
+const MongoStore = require('connect-mongo')(session);
 
 
 // middlewares for parsing form data and cookies
@@ -32,8 +33,6 @@ app.set('layout extractScripts', true);
 app.set('view engine', 'ejs');
 app.set('views', './views');
 
-
-
 // setting up a middleware for creating session and setting some parameters on that session
 app.use(session({
 
@@ -50,7 +49,17 @@ app.use(session({
 
         // setting cookie age(in millisec) after which it expires
         maxAge: (1000 * 60 * 100)
-    }
+    },
+
+    // set up mongostore to store session cookie in the sessions collection
+    store: new MongoStore({
+        // url: 'mongodb://localhost/codial_development',
+        mongooseConnection: db,
+        ttl: 14 * 24 * 60 * 60, // 14 days
+        autoRemove: 'disabled'
+    }, function(err){
+        console.log(err || 'connect-mongodb set ip ok!')
+    })
 }));
 
 
@@ -80,4 +89,5 @@ app.listen(port, function(err){
 
 
 
+ 
 

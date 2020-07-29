@@ -8,3 +8,5 @@ db.on('error', console.error.bind(console, 'Error while connecting to the databa
 db.once('open', function(){
     console.log('successfully connected to the database:: mongodb');
 });
+
+module.exports = db;

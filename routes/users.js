@@ -17,12 +17,11 @@ router.get('/profile', passport.checkAuthenticated, userController.profile);
 
 
 router.get('/posts', usersPostController.posts);
-router.get('/sign-in-page', userController.signIn);
-router.get('/sign-up-page', userController.signUp);
+router.get('/sign-in-page', passport.isSignedIn, userController.signIn);
+router.get('/sign-up-page', passport.isSignedIn, userController.signUp);
 
 // route the create user post request to create user action in user controller
 router.post('/create', userController.createUser);
-
 
 /* 
   route to create the session i.e. signing in the user
@@ -43,4 +42,7 @@ router.post('/create-session', passport.authenticate(
         In that case, execute the createSession action inside ./controllers/user_controller.js
      */
 ), userController.createSession);
+
+
+router.get('/sign-out', userController.terminateSession);
 module.exports = router;
