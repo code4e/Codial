@@ -14,8 +14,20 @@ const passportLocal = require('./config/passport-local-strategy');
 // require passport and express-session for handling the session
 const passport = require('passport');
 
+// Require connect-mongo to store persistent session storage usign mongostore
 const MongoStore = require('connect-mongo')(session);
 
+const sassMiddlware = require('node-sass-middleware');
+
+
+// compile the scss files into css before the server starts so they're ready to be served
+app.use(sassMiddlware({
+    src: './assets/scss',
+    dest: './assets/css',
+    debug: true,
+    outputStyle: 'extended',
+    prefix: '/css'
+}));
 
 // middlewares for parsing form data and cookies
 app.use(express.urlencoded());
