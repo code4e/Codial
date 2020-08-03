@@ -1,1 +1,18 @@
-<h1>Page Footer</h1>
+<link rel="stylesheet" href="/css/footer.css" type="text/css">
+
+<footer>
+    <h4>&#xa9; Codial. All Rights Reserved</h4>
+
+    <ul>
+        <li>
+            <a href="/">Home</a>
+        </li>
+
+        <% if(locals.user) {%>
+            <li>
+                <a href="/users/profile">Profile</a>
+            </li>
+        <% } %>
+    </ul>
+
+</footer>
