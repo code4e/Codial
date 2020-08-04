@@ -4,8 +4,7 @@ const User = require('../models/users');
 // render the user profile page
 module.exports.profile = function (req, res) {
     return res.render('users', {
-        title: 'users',
-        link: ''
+        title: 'users'
         // email: res.locals.user.email,
         // name: res.locals.user.name
     });

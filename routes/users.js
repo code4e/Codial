@@ -2,7 +2,7 @@
 const express = require('express');
 const router = express.Router();
 const userController = require('../controllers/users_controllers');
-const usersPostController = require('../controllers/posts_controller');
+
 const {
     route
 } = require('.');
@@ -16,7 +16,7 @@ const passport = require('passport');
 router.get('/profile', passport.checkAuthenticated, userController.profile);
 
 
-router.get('/posts', usersPostController.posts);
+router.use('/posts', require('./posts'));
 router.get('/sign-in-page', passport.isSignedIn, userController.signIn);
 router.get('/sign-up-page', passport.isSignedIn, userController.signUp);
 

@@ -5,8 +5,33 @@
 
 <section id="fees-posts">
     <h1>Posts</h1>
-    <form action="/users/send-post" method="POST" id="new-post-form">
-        <textarea name="content" id="" cols="40" rows="5"></textarea>
+    <form action="/users/posts" method="POST" id="new-post-form">
+        <textarea name="content" id="" cols="40" rows="5" placeholder="Type Something....."></textarea>
         <button type="submit" value="Post">Post</button>
     </form>
+
+    <div id="list-post-container">
+        <ul>
+            <% for(let i of post) { %>
+                <li>
+                    <p>
+                        <%= i.content %>
+                    </p>
+                    <small>
+                        <%=i.user.name %>
+                    </small>
+                </li>
+            <% } %>
+        </ul>
+    </div>
 </section>
+
+
+    
+
+
+
+
+
+
+

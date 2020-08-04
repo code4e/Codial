@@ -66,7 +66,6 @@ passport.checkAuthenticated = function(req, res, next){
 // response locals to make it accssible in views
 passport.setAuthenticatedUser = function(req, res, next){
     if(req.isAuthenticated()){
-
         res.locals.user = req.user;
     }
     return next();
