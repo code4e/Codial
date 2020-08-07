@@ -46,7 +46,6 @@ module.exports.destroy = function (req, res) {
                         console.log('error in deleting comments for this post');
                         return res.redirect('/');
                     }
-                    console.log('********', result);
                 });
 
 

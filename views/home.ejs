@@ -15,65 +15,11 @@
     <% } %>
     <div id="list-post-container">
         <ul id="posts-list">
-            <% for(let i of post) { %>
-                <li>
-                    <div>
-                        <p>
-                            <%= i.content %>
-                            <small>
-                                <% if(locals.user && locals.user.id == i.user.id) { %>
-                                    <a href="users/posts/destroy?id=<%= i._id %>">Delete Post</a>
-                                <% } %>
-                            </small>
-                            
-                            
-                            <br>
-                            <small>
-                                <%=i.user.name %>
-                            </small>
-                        </p>
+            
 
-                        <div id="comments-container"></div>
+            <%- include("_posts"); %>
 
-                        <% if(locals.user) { %>
-                        <div id="comments-form-container">
-                            <form action="/users/comments/create-comment" method="POST">
-                                <input type="text" name="content">
-                                <input hidden name="post" value="<%= i._id %>">
-                                <button type="submit">Post Comment</button>
-                            </form>
-                        </div>
-                        <% } %>
-
-                        <div>
-                            <ul id="comments-list">
-                                <% for(let j of i.comments) { %>
-                                    <li>
-                                        <p>
-                                            <%=j.content %>
-                                            <small>
-                                                <% if(locals.user && locals.user.id == j.user.id) { %>
-                                                    <a href="/users/comments/destroy?id=<%= j._id %>">Delete comment</a>
-                                                <% } %>
-                                            </small>
-                                            
-                                            <br>
-                                            <small>
-                                                <%= j.user.name %>
-                                            </small>
-                                        </p>
-                                    </li>
-                                <%} %>
-                            </ul>
-                        </div>
-                            
-                        
-                        
-                         
-                    </div>
-                        
-                </li>
-            <% } %>
+            
         </ul>
     </div>
 
