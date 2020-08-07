@@ -1,12 +1,15 @@
 footer {
-  position: fixed;
-  width: 100%;
   bottom: 0;
-  background-color: slategray;
+  left: 0;
+  position: fixed;
+  font-size: small;
+  width: 100%;
   display: flex;
+  display: none;
   flex-wrap: nowrap;
   justify-content: left;
-  color: white; }
+  color: white;
+  background-color: slategray; }
   footer h4 {
     margin-left: 10px;
     align-self: center; }

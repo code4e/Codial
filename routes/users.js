@@ -19,6 +19,7 @@ router.get('/profile', passport.checkAuthenticated, userController.profile);
 router.use('/posts', require('./posts'));
 router.get('/sign-in-page', passport.isSignedIn, userController.signIn);
 router.get('/sign-up-page', passport.isSignedIn, userController.signUp);
+router.use('/comments', require('./comments'));
 
 // route the create user post request to create user action in user controller
 router.post('/create', userController.createUser);

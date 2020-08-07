@@ -36,7 +36,7 @@ module.exports.createUser = function (req, res) {
     User.findOne({
         email: req.body.email
     }, function (err, user) {
-        if (err) {
+        if (err) { 
             console.log("error in signing up the user");
             return res.redirect('back');
         }
@@ -58,7 +58,7 @@ module.exports.createUser = function (req, res) {
 module.exports.createSession = function (req, res) {
     console.log('successfully authenticated');
     // assuming that all failure cases are handled by passport and express-session, the next step is to redirect to profile page in case of success
-    return res.redirect('/');
+    return res.redirect('/users/profile');
 }
 
 module.exports.terminateSession = function (req, res) {
