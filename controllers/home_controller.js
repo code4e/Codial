@@ -20,10 +20,24 @@ module.exports.home = function (req, res) {
             console.log('Failed');
             return res.redirect('back');
         }
-        return res.render('home', {
-            title: "Codial | Home",
-            post: post
+
+        User.find({}, function(err, users){
+            if(err){
+                console.log('Error in fetching users');
+                return res.redirect('/');
+            }
+
+            return res.render('home', {
+                title: "Codial | Home",
+                post: post, 
+                all_users: users
+            });
+
         });
+
+
+
+        
 
 
 

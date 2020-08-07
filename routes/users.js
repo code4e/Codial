@@ -13,7 +13,7 @@ const passport = require('passport');
 
 // for users/profile request, we first pass it on the middleware which checks if user is authenticated. If user is 
 // authenticated, pass req forward to controller's action to render profile page
-router.get('/profile', passport.checkAuthenticated, userController.profile);
+router.get('/profile/:id', passport.checkAuthenticated, userController.profile);
 
 
 router.use('/posts', require('./posts'));

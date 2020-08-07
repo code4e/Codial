@@ -46,30 +46,56 @@ module.exports.destroyComment = function(req, res){
             console.log('Error occured while deleting');
             return res.redirect('/');
         }
-
-        if(comment.user == req.user.id){
-            let pId = comment.post;
-            let cId = comment.id;
-            comment.remove();
-            Post.findById(pId, function(err, post){
-                if(err){
-                    console.log('Error');
-                    return;
-                }
-        
-                var objectId = mongoose.Types.ObjectId(cId);
-                let index = post.comments.findIndex(element => objectId.equals(element));
-                post.comments.splice(index, 1);
-                post.save();
-                console.log('comment deleted');
-                return res.redirect('/');
-        
-            });
-
-        }
-        else{
+        if(!comment){
             return res.redirect('/');
         }
+        Post.findById(comment.post).populate('user').exec(function(err, post){
+            if(err){
+                console.log('Error has occured');
+                return;
+            }
+            if(comment.user == req.user.id || post.user.id == req.user.id){
+                let pId = comment.post;
+                let cId = comment.id;
+                comment.remove();
+
+                    var objectId = mongoose.Types.ObjectId(cId);
+                    let index = post.comments.findIndex(element => objectId.equals(element));
+                    post.comments.splice(index, 1);
+                    post.save();
+                    console.log('comment deleted');
+                    return res.redirect('/');
+            }
+            else{
+                return res.redirect('/');
+            } 
+        });
+
+
+
+        // if(comment.user == req.user.id){
+        //     let pId = comment.post;
+        //     let cId = comment.id;
+        //     comment.remove();
+        //     Post.findById(pId, function(err, post){
+        //         if(err){
+        //             console.log('Error');
+        //             return;
+        //         }
+        
+        //         var objectId = mongoose.Types.ObjectId(cId);
+        //         let index = post.comments.findIndex(element => objectId.equals(element));
+        //         post.comments.splice(index, 1);
+        //         post.save();
+        //         console.log('comment deleted');
+        //         return res.redirect('/');
+        
+        //     });
+
+        // }
+        // else{
+        //     return res.redirect('/');
+        // }
     });
 
 

@@ -5,10 +5,28 @@
     </h1>
 
     <p>
-        EmailID is: <%= user.email %>
+        EmailID is: <%= profile_user.email %>
     </p>
 
     <p>
-        Username is: <%= user.name %>
+        Username is: <%= profile_user.name %>
     </p>
+
+
+    <% if(locals.user.id == profile_user.id) { %>
+        <!-- if user matches, show update profile form -->
+        <div id="profile-update">
+            <h4>
+                Update Profile
+            </h4>
+            <form action="/users/update/<%= locals.user.id %>" method="POST">
+                <input type="text" placeholder="Update name">
+                <input type="email" placeholder="Update Email">
+                <input type="password" placeholder="Update Password">
+
+                <button type="submit">Update Details</button>
+            </form>
+        </div>
+    <% } %>
+    
     

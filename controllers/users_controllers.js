@@ -3,11 +3,28 @@ const User = require('../models/users');
 
 // render the user profile page
 module.exports.profile = function (req, res) {
-    return res.render('users', {
-        title: 'users'
-        // email: res.locals.user.email,
-        // name: res.locals.user.name
+
+    console.log(req.params.id);
+
+    User.findById(req.params.id, function(err, u){
+        if(err){
+            console.log('Error occured');
+            return;
+        }
+
+        if(u){
+            return res.render('users', {
+                title: 'users',
+                profile_user: u
+            });
+        }
+        else{
+            return res.redirect('back');
+        }
+
+
     });
+    
 }
 
 
@@ -58,7 +75,7 @@ module.exports.createUser = function (req, res) {
 module.exports.createSession = function (req, res) {
     console.log('successfully authenticated');
     // assuming that all failure cases are handled by passport and express-session, the next step is to redirect to profile page in case of success
-    return res.redirect('/users/profile');
+    return res.redirect(`/users/profile/${req.user.id}`);
 }
 
 module.exports.terminateSession = function (req, res) {

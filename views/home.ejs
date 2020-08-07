@@ -24,8 +24,21 @@
     </div>
 
 
-    <div id="list-comments-container">
-
+    <div id="user-friends">
+        <% if(locals.user) { %>
+        <h4>Friends</h4>
+        <ul>
+            <% for(let u of all_users) { %>
+                <% if(locals.user.id != u.id) {%>
+                <li>
+                    <p>
+                        <a href="/users/profile/<%= u.id %>"><%=u.name%></a>
+                    </p>
+                </li>
+                <% } %>
+            <% } %>
+        </ul>
+        <% } %>
     </div>
 </section>
 

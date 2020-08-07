@@ -31,8 +31,10 @@
 
         <div>
             <ul id="comments-list">
+
+                <!-- use ejs partials to further segment the code to decrease clutter -->
                 <% for(let j of i.comments) { %>
-                    <%- include("_comments", {j: j}); %>
+                    <%- include("_comments", {j: j, i: i}); %>
                 <% } %>
             </ul>
         </div>
