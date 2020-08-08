@@ -19,11 +19,11 @@
             <h4>
                 Update Profile
             </h4>
-            <form action="/users/update/<%= locals.user.id %>" method="POST">
-                <input type="text" placeholder="Update name">
-                <input type="email" placeholder="Update Email">
-                <input type="password" placeholder="Update Password">
-
+            <form action="/users/update/<%= profile_user.id %>" method="POST">
+                <input type="text" placeholder="Update name" name="newName" value="<%=profile_user.name%>">
+                <input type="email" placeholder="Update Email" name="newEmail" value="<%=profile_user.email%>">
+                <br>
+                <br>
                 <button type="submit">Update Details</button>
             </form>
         </div>

@@ -28,6 +28,35 @@ module.exports.profile = function (req, res) {
 }
 
 
+
+// update the user profile 
+module.exports.update = function(req, res){
+    // check if the user making the update is actually the logged in user or not
+
+    if(req.user.id == req.params.id){
+
+        User.findByIdAndUpdate(req.params.id, {
+            // set new name and email in the db
+            $set: {
+                name: req.body.newName,
+                email: req.body.newEmail
+            }
+        }, function(err, updatedUser){
+            if(err){
+                console.log('Error');
+                return;
+            }
+            return res.redirect('/');
+        });
+    }
+
+    // throw a status code error
+    else{
+        return res.status(401).send('Unauthorized');
+    }
+
+}
+
 // render the sign in page
 module.exports.signIn = function (req, res) {
     return res.render('user_sign_in', {

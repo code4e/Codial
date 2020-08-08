@@ -3,3 +3,14 @@
   background-color: #6de67d;
   padding: 2px;
   color: gray; }
+
+#site-conainer {
+  display: flex; }
+  #site-conainer #fees-posts {
+    width: 70%;
+    padding: 10px; }
+  #site-conainer #user-friends {
+    width: 30%;
+    padding: 10px;
+    border-left: 1px solid gray;
+    height: 100; }

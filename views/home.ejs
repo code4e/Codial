@@ -5,42 +5,45 @@
 </h1>
 
 
-<section id="fees-posts">
-    <% if(locals.user) { %>
-        <h1>Posts</h1>
-        <form action="/users/posts/create-post" method="POST" id="new-post-form">
-            <textarea name="content" id="" cols="40" rows="5" placeholder="Type Something....."></textarea>
-            <button type="submit" value="Post">Post</button>
-        </form>
-    <% } %>
-    <div id="list-post-container">
-        <ul id="posts-list">
-            
 
-            <%- include("_posts"); %>
-
-            
-        </ul>
-    </div>
-
-
-    <div id="user-friends">
+<div id="site-conainer">
+    <section id="fees-posts">
         <% if(locals.user) { %>
-        <h4>Friends</h4>
-        <ul>
-            <% for(let u of all_users) { %>
-                <% if(locals.user.id != u.id) {%>
-                <li>
-                    <p>
-                        <a href="/users/profile/<%= u.id %>"><%=u.name%></a>
-                    </p>
-                </li>
-                <% } %>
-            <% } %>
-        </ul>
+            <h1>Posts</h1>
+            <form action="/users/posts/create-post" method="POST" id="new-post-form">
+                <textarea name="content" id="" cols="40" rows="5" placeholder="Type Something....."></textarea>
+                <button type="submit" value="Post">Post</button>
+            </form>
         <% } %>
-    </div>
-</section>
+        <div id="list-post-container">
+            <ul id="posts-list">
+                
+    
+                <%- include("_posts"); %>
+    
+                
+            </ul>
+        </div>
+    </section>
+        <div id="user-friends">
+            <% if(locals.user) { %>
+            <h4>Friends</h4>
+            <ul>
+                <% for(let u of all_users) { %>
+                    <% if(locals.user.id != u.id) {%>
+                    <li>
+                        <p>
+                            <a href="/users/profile/<%= u.id %>"><%=u.name%></a>
+                        </p>
+                    </li>
+                    <% } %>
+                <% } %>
+            </ul>
+            <% } %>
+        </div>
+    
+</div>
+
 
 
     
